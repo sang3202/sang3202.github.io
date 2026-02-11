@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>팔색조 - 조화로운 팀 포트폴리오</title>
+    <meta name="description" content="조화로운 팔색조가 되자!">
+    <meta name="keywords" content="팔색조, 실행력, 창의성, 즐거움, 팀 포트폴리오">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="팔색조">
+    <meta property="og:description" content="조화로운 팔색조가 되자!">
+    <meta property="og:image" content="team.jpg">
+    <meta property="og:type" content="website">
+    
+    <style>
+        /* 기본 리셋 및 변수 설정 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* 네온 사이버 색상 팔레트 */
+            --dark-bg: #0F0F0F;
+            --neon-pink: #FF006E;
+            --neon-cyan: #00F0FF;
+            --neon-yellow: #FFD60A;
+            --white: #FFFFFF;
+            --gray: #333333;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background: var(--dark-bg);
+            color: var(--white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* 스크롤 스무스 효과 */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* 글로우 효과 유틸리티 */
+        .glow-pink {
+            text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink), 0 0 30px var(--neon-pink);
+        }
+
+        .glow-cyan {
+            text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan), 0 0 30px var(--neon-cyan);
+        }
+
+        .glow-yellow {
+            text-shadow: 0 0 10px var(--neon-yellow), 0 0 20px var(--neon-yellow), 0 0 30px var(--neon-yellow);
+        }
+
+        /* 히어로 섹션 - 매거진 스타일 */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #1a0520 50%, var(--dark-bg) 100%);
+        }
+
+        /* 배경 애니메이션 그리드 */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, var(--neon-cyan) 1px, transparent 1px),
+                linear-gradient(0deg, var(--neon-cyan) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.1;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content {
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 8rem;
+            font-weight: 900;
+            color: var(--neon-pink);
+            margin-bottom: 20px;
+            letter-spacing: -3px;
+            animation: neonFlicker 3s ease-in-out infinite;
+            text-transform: uppercase;
+        }
+
+        @keyframes neonFlicker {
+            0%, 100% { 
+                text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink), 0 0 30px var(--neon-pink), 0 0 40px var(--neon-pink);
+            }
+            50% { 
+                text-shadow: 0 0 5px var(--neon-pink), 0 0 10px var(--neon-pink), 0 0 15px var(--neon-pink);
+            }
+        }
+
+        .hero-content p {
+            font-size: 2rem;
+            color: var(--neon-cyan);
+            margin-bottom: 40px;
+            text-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .team-photo-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+        }
+
+        .team-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 3px solid var(--neon-cyan);
+            box-shadow: 0 0 30px var(--neon-cyan), 0 0 60px var(--neon-cyan);
+            transition: all 0.5s ease;
+        }
+
+        .team-photo:hover {
+            transform: rotate(5deg) scale(1.05);
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 30px var(--neon-pink), 0 0 60px var(--neon-pink);
+        }
+
+        /* 캐릭터 배치 */
+        .character {
+            position: absolute;
+            width: 120px;
+            height: auto;
+            filter: drop-shadow(0 0 15px var(--neon-cyan));
+            animation: floatCharacter 4s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+
+        .character:hover {
+            transform: scale(1.3) rotate(360deg) !important;
+            filter: drop-shadow(0 0 30px var(--neon-pink));
+        }
+
+        .character-1 {
+            top: -80px;
+            left: -60px;
+            animation-delay: 0s;
+        }
+
+        .character-2 {
+            top: -60px;
+            right: -60px;
+            animation-delay: 0.5s;
+        }
+
+        .character-3 {
+            bottom: -80px;
+            left: -80px;
+            animation-delay: 1s;
+        }
+
+        .character-4 {
+            bottom: -60px;
+            right: -70px;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes floatCharacter {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(5deg); }
+            50% { transform: translateY(-10px) rotate(-5deg); }
+            75% { transform: translateY(-15px) rotate(3deg); }
+        }
+
+        /* Team Values 섹션 - 비대칭 매거진 레이아웃 */
+        .values {
+            padding: 100px 20px;
+            background: var(--dark-bg);
+            position: relative;
+        }
+
+        .values::before {
+            content: 'VALUES';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 15rem;
+            font-weight: 900;
+            color: var(--gray);
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        .values-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            font-size: 5rem;
+            font-weight: 900;
+            color: var(--neon-yellow);
+            margin-bottom: 80px;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px var(--neon-yellow);
+            letter-spacing: -2px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .value-card {
+            background: linear-gradient(135deg, rgba(255, 0, 110, 0.1) 0%, rgba(0, 240, 255, 0.1) 100%);
+            border: 2px solid var(--neon-pink);
+            padding: 50px;
+            border-radius: 0;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 0, 110, 0.3), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+        }
+
+        .value-card:hover {
+            transform: rotate(-3deg) scale(1.05);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 40px var(--neon-cyan);
+        }
+
+        .value-card:hover::before {
+            animation: shine 1s ease;
+        }
+
+        @keyframes shine {
+            0% { left: -50%; }
+            100% { left: 150%; }
+        }
+
+        .value-card:nth-child(2) {
+            grid-column: 2;
+            grid-row: 1 / 3;
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.1) 0%, rgba(255, 214, 10, 0.1) 100%);
+            border-color: var(--neon-cyan);
+        }
+
+        .value-card:nth-child(3) {
+            background: linear-gradient(135deg, rgba(255, 214, 10, 0.1) 0%, rgba(255, 0, 110, 0.1) 100%);
+            border-color: var(--neon-yellow);
+        }
+
+        .value-icon {
+            font-size: 4rem;
+            margin-bottom: 30px;
+            display: block;
+        }
+
+        .value-card h3 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .value-card:nth-child(1) h3 { color: var(--neon-pink); text-shadow: 0 0 15px var(--neon-pink); }
+        .value-card:nth-child(2) h3 { color: var(--neon-cyan); text-shadow: 0 0 15px var(--neon-cyan); }
+        .value-card:nth-child(3) h3 { color: var(--neon-yellow); text-shadow: 0 0 15px var(--neon-yellow); }
+
+        .value-rating {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--neon-yellow);
+        }
+
+        .value-card p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Team Members 섹션 - 매거진 그리드 */
+        .members {
+            padding: 100px 20px;
+            background: linear-gradient(180deg, var(--dark-bg) 0%, #1a0520 100%);
+            position: relative;
+        }
+
+        .members-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .member-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid transparent;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .member-card:hover {
+            transform: scale(1.1) rotate(5deg);
+            z-index: 10;
+        }
+
+        .member-card:nth-child(1) { border-color: var(--neon-pink); }
+        .member-card:nth-child(2) { border-color: var(--neon-cyan); }
+        .member-card:nth-child(3) { border-color: var(--neon-yellow); }
+        .member-card:nth-child(4) { border-color: var(--neon-pink); }
+        .member-card:nth-child(5) { border-color: var(--neon-cyan); }
+        .member-card:nth-child(6) { border-color: var(--neon-yellow); }
+        .member-card:nth-child(7) { border-color: var(--neon-pink); }
+        .member-card:nth-child(8) { border-color: var(--neon-cyan); }
+
+        .member-card:hover {
+            box-shadow: 0 0 40px currentColor;
+        }
+
+        .member-photo {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .member-card:hover .member-photo {
+            transform: scale(1.2) rotate(-5deg);
+        }
+
+        .member-info {
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .member-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .member-card:nth-child(odd) .member-info h3 { color: var(--neon-pink); }
+        .member-card:nth-child(even) .member-info h3 { color: var(--neon-cyan); }
+
+        .member-info p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Guestbook 섹션 */
+        .guestbook {
+            padding: 100px 20px;
+            background: var(--dark-bg);
+        }
+
+        .guestbook-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .guestbook-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 3px solid var(--neon-cyan);
+            padding: 50px;
+            box-shadow: 0 0 40px var(--neon-cyan);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--gray);
+            color: var(--white);
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 3px solid var(--neon-pink);
+        }
+
+        footer p {
+            font-size: 1.1rem;
+        }
+
+        footer a {
+            color: var(--neon-cyan);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        footer a:hover {
+            color: var(--neon-pink);
+            text-shadow: 0 0 20px var(--neon-pink);
+        }
+
+        /* 스크롤 다운 인디케이터 */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 50px;
+            border: 3px solid var(--neon-cyan);
+            border-radius: 25px;
+            animation: scrollPulse 2s infinite;
+        }
+
+        .scroll-indicator::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--neon-cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--neon-cyan);
+            animation: scrollDot 2s infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { 
+                border-color: var(--neon-cyan);
+                box-shadow: 0 0 10px var(--neon-cyan);
+            }
+            50% { 
+                border-color: var(--neon-pink);
+                box-shadow: 0 0 20px var(--neon-pink);
+            }
+        }
+
+        @keyframes scrollDot {
+            0% { top: 10px; opacity: 1; }
+            100% { top: 30px; opacity: 0; }
+        }
+
+        /* 반응형 디자인 */
+        @media (max-width: 1200px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 5rem;
+            }
+
+            .team-photo-container {
+                margin: 0 auto;
+            }
+
+            .members-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 4rem;
+            }
+
+            .hero-content p {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 3rem;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .value-card:nth-child(2) {
+                grid-column: 1;
+                grid-row: auto;
+            }
+
+            .members-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-photo-container {
+                width: 300px;
+                height: 300px;
+            }
+
+            .character {
+                width: 80px;
+            }
+
+            .character-1, .character-2 {
+                top: -40px;
+            }
+
+            .character-3, .character-4 {
+                bottom: -40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .value-card {
+                padding: 30px;
+            }
+
+            .value-card h3 {
+                font-size: 2rem;
+            }
+
+            .guestbook-box {
+                padding: 30px;
+            }
+        }
+
+        /* 커서 효과 */
+        .dynamic-cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--neon-cyan);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.1s ease;
+            box-shadow: 0 0 20px var(--neon-cyan);
+        }
+    </style>
+</head>
+<body>
+    <!-- 커서 효과 -->
+    <div class="dynamic-cursor" id="cursor"></div>
+
+    <!-- 히어로 섹션 -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="glow-pink">팔색조</h1>
+                <p class="glow-cyan">조화로운 팔색조가 되자!</p>
+            </div>
+            <div class="hero-visual">
+                <div class="team-photo-container">
+                    <img src="team.jpg" alt="팔색조 팀 사진" class="team-photo">
+                    <img src="character.png" alt="캐릭터1" class="character character-1">
+                    <img src="character.png" alt="캐릭터2" class="character character-2">
+                    <img src="character.png" alt="캐릭터3" class="character character-3">
+                    <img src="character.png" alt="캐릭터4" class="character character-4">
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator"></div>
+    </section>
+
+    <!-- Team Values 섹션 -->
+    <section class="values">
+        <div class="values-container">
+            <h2 class="section-title glow-yellow">OUR VALUES</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <span class="value-icon">🚀</span>
+                    <h3>실행력</h3>
+                    <div class="value-rating">★★★★☆</div>
+                    <p>4.5 수석을 향한 실행력을 기릅니다.</p>
+                </div>
+                <div class="value-card">
+                    <span class="value-icon">💡</span>
+                    <h3>창의성</h3>
+                    <div class="value-rating">★★★★☆</div>
+                    <p>어떤 문제가 생겨도 창의적이게 해결합니다.</p>
+                </div>
+                <div class="value-card">
+                    <span class="value-icon">🎉</span>
+                    <h3>즐거움</h3>
+                    <div class="value-rating">★★★★☆</div>
+                    <p>청춘을 누구보다 즐겁게 즐기겠습니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Members 섹션 -->
+    <section class="members">
+        <div class="members-container">
+            <h2 class="section-title glow-pink">TEAM MEMBERS</h2>
+            <div class="members-grid">
+                <div class="member-card">
+                    <img src="member1.jpg" alt="권세아" class="member-photo">
+                    <div class="member-info">
+                        <h3>권세아</h3>
+                        <p>행정학부<br>무엇이든 열심히 잘 하는 사람이 되고 싶습니다~!!</p>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="member2.jpg" alt="장서희" class="member-photo">
+                    <div class="member-info">
+                        <h3>장서희</h3>
+                        <p>행정학과<br>공무원 하고시퍼용 야르~</p>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="member3.jpg" alt="김지형" class="member-photo">
+                    <div class="member-info">
+                        <h3>김지형</h3>
+                        <p>국가안보학과<br>운동을 사랑합니다. 운동을 통해 배운 열정과 끈기로 무엇이든 포기하지 않고 성취하려는 자세를 가지고 있습니다.</p>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="member4.jpg" alt="서정우" class="member-photo">
+                    <div class="member-info">
+                        <h3>서정우</h3>
+                        <p>한일문화콘텐츠학과<br>포기하지 않고 끝까지 노력하여 맡은 일에 최선을 다하는 사람입니다</p>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="member5.jpg" alt="양정운" class="member-photo">
+                    <div class="member-info">
+                        <h3>양정운</h3>
+                        <p>일문화콘텐츠학과<br>콘텐츠를 좋아하고, 무엇이든 도전하는 사람이 되고 싶어요.</p>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="member6.jpg" alt="신세영" class="member-photo">
+                    <div class="member-info">
+                        <h3>신세영</h3>
+                        <p>한일문화콘텐츠전공<br>항상 밝은 에너지를 내뿜는 힙합꿈나무 신세영입니다😎 스껄~</p>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="member7.jpg" alt="양효은" class="member-photo">
+                    <div class="member-info">
+                        <h3>양효은</h3>
+                        <p>행정학부<br>멋진 사람이 되려고 노력하고 있습니다!</p>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="member8.jpg" alt="김서연" class="member-photo">
+                    <div class="member-info">
+                        <h3>김서연</h3>
+                        <p>문헌정보학전공<br>성실한 대학생이 되고 싶습니다</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guestbook 섹션 -->
+    <section class="guestbook">
+        <div class="guestbook-container">
+            <h2 class="section-title glow-cyan">GUESTBOOK</h2>
+            <div class="guestbook-box">
+                <!-- Utterances 방명록 위젯 -->
+                <script src="https://utteranc.es/client.js"
+                        repo="aitrizkr/aiws_sm2026"
+                        issue-term="pathname"
+                        label="방명록"
+                        theme="github-dark"
+                        crossorigin="anonymous"
+                        async>
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 팔색조. Powered by <a href="https://ai.triz.kr" target="_blank">AI Portfolio Workshop</a>.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 커스텀 커서 효과
+        const cursor = document.getElementById('cursor');
+        let mouseX = 0;
+        let mouseY = 0;
+        let cursorX = 0;
+        let cursorY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursor() {
+            const dx = mouseX - cursorX;
+            const dy = mouseY - cursorY;
+            
+            cursorX += dx * 0.1;
+            cursorY += dy * 0.1;
+            
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+            
+            requestAnimationFrame(animateCursor);
+        }
+
+        animateCursor();
+
+        // 호버 시 커서 크기 변경
+        const interactiveElements = document.querySelectorAll('a, button, .member-card, .value-card, .character');
+        
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.width = '40px';
+                cursor.style.height = '40px';
+                cursor.style.borderColor = '#FF006E';
+                cursor.style.boxShadow = '0 0 30px #FF006E';
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                cursor.style.width = '20px';
+                cursor.style.height = '20px';
+                cursor.style.borderColor = '#00F0FF';
+                cursor.style.boxShadow = '0 0 20px #00F0FF';
+            });
+        });
+
+        // 스크롤 애니메이션
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        // 애니메이션 대상 요소 관찰
+        document.querySelectorAll('.value-card, .member-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 페이드인 애니메이션 정의
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(50px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // 멤버 카드 역동적 효과
+        const memberCards = document.querySelectorAll('.member-card');
+        memberCards.forEach((card, index) => {
+            card.addEventListener('mouseenter', () => {
+                memberCards.forEach((otherCard, otherIndex) => {
+                    if (otherIndex !== index) {
+                        otherCard.style.transform = 'scale(0.95)';
+                        otherCard.style.opacity = '0.5';
+                    }
+                });
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                memberCards.forEach(otherCard => {
+                    otherCard.style.transform = '';
+                    otherCard.style.opacity = '';
+                });
+            });
+        });
+
+        // 캐릭터 랜덤 움직임
+        const characters = document.querySelectorAll('.character');
+        characters.forEach((char, index) => {
+            setInterval(() => {
+                const randomRotate = Math.random() * 20 - 10;
+                const randomY = Math.random() * 10 - 5;
+                char.style.transform = `translateY(${randomY}px) rotate(${randomRotate}deg)`;
+            }, 2000 + index * 500);
+        });
+    </script>
+</body>
+</html>
